@@ -12,6 +12,7 @@ import {
   User,
   Webhook,
   PasswordResetToken,
+  Region,
 } from '../schema/types'
 import Table from './table'
 import StreamTable from './stream-table'
@@ -29,6 +30,7 @@ export class DB {
   user: Table<User>
   webhook: Table<Webhook>
   passwordResetToken: Table<PasswordResetToken>
+  region: Table<Region>
 
   postgresUrl: String
   replicaUrl: String
@@ -96,6 +98,8 @@ export class DB {
       db: this,
       schema: schemas['password-reset-token'],
     })
+
+    this.region =  new Table<Region>({ db: this, schema: schemas['region']})
 
     const tables = Object.entries(schema.components.schemas).filter(
       ([name, schema]) => !!schema.table,

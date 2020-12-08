@@ -7,6 +7,7 @@ import stream from './stream'
 import user from './user'
 import geolocate from './geolocate'
 import webhook from './webhook'
+import region from './region'
 import stripe from './stripe'
 import version from './version'
 
@@ -21,6 +22,7 @@ export default {
   geolocate,
   ingest,
   webhook,
+  region,
   stripe,
   version,
 }
