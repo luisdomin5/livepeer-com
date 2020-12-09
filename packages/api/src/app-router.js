@@ -5,6 +5,7 @@ import makeStore from './store'
 import {
   healthCheck,
   kubernetes,
+  subgraph,
   hardcodedNodes,
   insecureTest,
   geolocateMiddleware,
@@ -49,6 +50,7 @@ export default async function makeApp(params) {
     kubeBroadcasterTemplate,
     kubeOrchestratorService,
     kubeOrchestratorTemplate,
+    subgraphUrl,
     fallbackProxy,
     orchestrators = '[]',
     broadcasters = '[]',
@@ -107,6 +109,14 @@ export default async function makeApp(params) {
         kubeOrchestratorService,
         kubeBroadcasterTemplate,
         kubeOrchestratorTemplate,
+      }),
+    )
+  }
+
+  if (subgraphUrl) {
+    app.use(
+      subgraph({
+        subgraphUrl,
       }),
     )
   }
